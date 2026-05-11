@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANTS Trail — Technical Flows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--surface3:#1e1e28;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#f0eff8;--text2:#9896b0;--text3:#5c5a72;
+  --accent:#7c6dfa;--accent2:#a99cff;--accent-glow:rgba(124,109,250,0.15);
+  --green:#36d98a;--green-dim:rgba(54,217,138,0.12);
+  --amber:#f5a623;--amber-dim:rgba(245,166,35,0.12);
+  --coral:#ff5e5e;--coral-dim:rgba(255,94,94,0.12);
+  --teal:#2dd4bf;--teal-dim:rgba(45,212,191,0.12);
+  --blue:#60a5fa;--blue-dim:rgba(96,165,250,0.12);
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --display:'Syne',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:10px;--r-lg:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6}
+
+/* HERO */
+.hero{position:relative;padding:72px 60px 56px;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 65% -5%,rgba(124,109,250,0.2) 0%,transparent 65%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.hero-eye{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hero-eye::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--display);font-size:clamp(34px,4.5vw,54px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+.hero h1 span{background:linear-gradient(135deg,var(--accent2) 0%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:15px;color:var(--text2);max-width:500px;line-height:1.75}
+.hero-tags{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.htag{font-family:var(--mono);font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--text3);background:var(--surface2)}
+.hero-stats{display:flex;flex-direction:column;gap:16px;text-align:right}
+.hstat strong{display:block;font-family:var(--display);font-size:30px;font-weight:700;color:var(--text);letter-spacing:-.02em;line-height:1}
+.hstat span{font-size:12px;color:var(--text3);font-family:var(--mono)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;overflow-x:auto}
+nav a{display:flex;align-items:center;gap:7px;padding:13px 16px;font-size:12px;font-weight:500;color:var(--text3);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;font-family:var(--sans)}
+nav a:hover{color:var(--accent2);border-bottom-color:var(--accent)}
+.nn{font-family:var(--mono);font-size:10px;background:var(--surface3);color:var(--text3);padding:2px 6px;border-radius:4px}
+
+/* LAYOUT */
+.main{max-width:1080px;padding:0 60px 80px}
+
+/* SECTION */
+.flow-section{padding:60px 0 0}
+.sec-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:32px}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-glow);border:1px solid rgba(124,109,250,.25);padding:4px 10px;border-radius:6px;margin-top:3px;flex-shrink:0}
+.sec-title h2{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:5px}
+.sec-title p{font-size:13.5px;color:var(--text2);max-width:580px;line-height:1.75}
+code.inline{font-family:var(--mono);font-size:11.5px;color:var(--accent2);background:rgba(124,109,250,.1);padding:1px 6px;border-radius:4px}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;letter-spacing:.06em;margin-left:8px;vertical-align:middle}
+.badge-r1{background:var(--green-dim);color:var(--green);border:1px solid rgba(54,217,138,.2)}
+.badge-r2{background:var(--accent-glow);color:var(--accent2);border:1px solid rgba(124,109,250,.2)}
+.badge-both{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.2)}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.g2.full{grid-column:1/-1}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:16px}
+.card-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;background:var(--surface2)}
+.cd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cd-g{background:var(--green);box-shadow:0 0 5px rgba(54,217,138,.5)}
+.cd-b{background:var(--blue);box-shadow:0 0 5px rgba(96,165,250,.5)}
+.cd-a{background:var(--accent);box-shadow:0 0 5px rgba(124,109,250,.5)}
+.cd-t{background:var(--teal);box-shadow:0 0 5px rgba(45,212,191,.5)}
+.cd-c{background:var(--coral);box-shadow:0 0 5px rgba(255,94,94,.5)}
+.cd-m{background:var(--amber);box-shadow:0 0 5px rgba(245,166,35,.5)}
+.card-head-lbl{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.card-body{padding:18px}
+
+/* SCREEN MOCKUPS */
+.screen{background:#0c0c14;border-radius:8px;padding:26px 22px}
+
+.mock-logo{font-family:var(--display);font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:24px;display:flex;align-items:center;gap:7px}
+.mock-logo-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 8px var(--accent)}
+.mock-h2{font-family:var(--display);font-size:18px;font-weight:700;color:var(--text);margin-bottom:3px}
+.mock-sub{font-size:12px;color:var(--text3);margin-bottom:20px}
+
+.mock-field{margin-bottom:12px}
+.mock-field label{display:block;font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:5px}
+.mock-inp{width:100%;background:var(--surface3);border:1px solid var(--border2);border-radius:7px;padding:9px 13px;font-size:13px;color:var(--text);font-family:var(--sans)}
+.mock-inp.focused{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,109,250,.12)}
+.mock-inp.err{border-color:rgba(255,94,94,.4)}
+
+.mock-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:7px;padding:11px;font-size:13px;font-weight:600;font-family:var(--sans);margin-top:6px;letter-spacing:.01em}
+.mock-btn-danger{background:var(--coral)}
+
+.mock-err-box{background:var(--coral-dim);border:1px solid rgba(255,94,94,.2);border-radius:7px;padding:8px 12px;font-size:11px;color:var(--coral);font-family:var(--mono);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+
+/* Profile form mock */
+.mock-progress-steps{display:flex;gap:5px;margin-bottom:22px}
+.mps{flex:1;height:3px;border-radius:2px;background:var(--surface3)}
+.mps.done{background:var(--green)}
+.mps.active{background:var(--accent)}
+.mock-eye{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.mock-sel-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.mock-opt{background:var(--surface3);border:1px solid var(--border2);border-radius:7px;padding:8px 11px;font-size:12px;color:var(--text2);text-align:center;cursor:pointer}
+.mock-opt.sel{background:var(--accent-glow);border-color:var(--accent);color:var(--accent2);font-weight:600}
+.mock-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.mock-chip{background:var(--surface3);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--text2);font-family:var(--mono)}
+.mock-chip.sel{background:var(--accent-glow);border-color:var(--accent);color:var(--accent2)}
+
+/* Roadmap mock */
+.rm-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.rm-title{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text)}
+.rm-key{font-family:var(--mono);font-size:10px;color:var(--accent);margin-top:2px}
+.rm-pct{font-family:var(--display);font-size:24px;font-weight:800;color:var(--green);text-align:right;line-height:1}
+.rm-pct-lbl{font-family:var(--mono);font-size:10px;color:var(--text3)}
+.rm-bar{height:4px;background:var(--surface3);border-radius:2px;margin-bottom:16px;overflow:hidden}
+.rm-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent) 0%,var(--teal) 100%)}
+.course-row{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:7px;margin-bottom:5px;border:1px solid var(--border);background:var(--surface2)}
+.course-row.active{border-color:rgba(124,109,250,.3);background:rgba(124,109,250,.06)}
+.course-row.done{opacity:.5}
+.c-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.c-info{flex:1;min-width:0}
+.c-name{font-size:12px;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-meta{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.c-plat{font-size:9px;font-family:var(--mono);padding:2px 6px;border-radius:4px;background:var(--surface3);color:var(--text3);border:1px solid var(--border);flex-shrink:0}
+
+/* Admin mock */
+.adm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.adm-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
+.pill-row{display:flex;gap:5px}
+.pill{font-family:var(--mono);font-size:10px;padding:4px 9px;border-radius:20px;border:1px solid var(--border2);color:var(--text3);background:var(--surface3)}
+.pill.active{border-color:var(--accent);color:var(--accent2);background:var(--accent-glow)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}
+.stat-box{background:var(--surface3);border:1px solid var(--border);border-radius:7px;padding:9px 11px}
+.stat-v{font-family:var(--display);font-size:19px;font-weight:700;color:var(--text)}
+.stat-l{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.atbl{width:100%;border-collapse:collapse}
+.atbl th{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;padding:5px 7px;text-align:left;border-bottom:1px solid var(--border)}
+.atbl td{font-size:11px;color:var(--text2);padding:7px;border-bottom:1px solid var(--border)}
+.atbl tr:last-child td{border-bottom:none}
+.atbl tr.ov td{color:var(--coral)}
+.mini-bar{display:flex;align-items:center;gap:7px}
+.mbar{flex:1;height:4px;background:var(--surface3);border-radius:2px;overflow:hidden}
+.mbar-f{height:100%;border-radius:2px;background:var(--green)}
+.mbar-f.low{background:var(--coral)}
+.mbar-f.mid{background:var(--amber)}
+
+/* Bar chart mini */
+.bchart{margin-bottom:14px}
+.bchart-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:8px}
+.brow{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.brow-key{font-family:var(--mono);font-size:10px;color:var(--text3);width:46px;flex-shrink:0}
+.btrack{flex:1;height:16px;background:var(--surface3);border-radius:3px;overflow:hidden}
+.bfill{height:100%;border-radius:3px}
+.bcount{font-family:var(--mono);font-size:10px;width:18px;text-align:right;flex-shrink:0}
+
+/* Flow steps */
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-n{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--surface3);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-c{flex:1}
+.step-lbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.step-det{font-family:var(--mono);font-size:11px;color:var(--text3);line-height:1.55}
+.stag{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.stag-post{background:var(--green-dim);color:var(--green)}
+.stag-get{background:var(--blue-dim);color:var(--blue)}
+.stag-db{background:var(--amber-dim);color:var(--amber)}
+.stag-err{background:var(--coral-dim);color:var(--coral)}
+
+/* Code */
+.code{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:16px}
+.code-head{background:var(--surface2);border-bottom:1px solid var(--border);padding:10px 18px;font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:9px}
+.dots{display:flex;gap:5px}
+.dots span{width:9px;height:9px;border-radius:50%}
+.dots span:nth-child(1){background:#ff5f57}
+.dots span:nth-child(2){background:#febc2e}
+.dots span:nth-child(3){background:#28c840}
+.code pre{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text2);padding:18px 20px;overflow-x:auto}
+pre .k{color:#a99cff}
+pre .s{color:#7ec98a}
+pre .n{color:#60a5fa}
+pre .v{color:#f5a623}
+pre .c{color:#4a4860;font-style:italic}
+
+/* State pills */
+.state-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.state-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px;display:flex;align-items:center;gap:11px}
+.state-ico{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px}
+.state-n{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
+.state-c{font-family:var(--mono);font-size:10px;color:var(--text3)}
+
+/* SSO */
+.sso-row{background:var(--surface3);border-radius:7px;padding:13px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.sso-lbl{font-family:var(--mono);font-size:12px;color:var(--text2)}
+.tog-track{width:34px;height:18px;background:var(--surface);border:1px solid var(--border2);border-radius:9px;position:relative;flex-shrink:0}
+.tog-track.on{background:var(--accent);border-color:var(--accent)}
+.tog-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:white;border-radius:50%}
+.tog-track.on .tog-thumb{left:18px}
+.sso-val{font-family:var(--mono);font-size:11px;color:var(--text3);margin-left:7px}
+.tog-track.on + .sso-val{color:var(--accent2)}
+.env-bar{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:11px 15px;font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+.ek{color:var(--accent2)}
+.ev{color:var(--green)}
+
+/* Divider */
+hr.div{border:none;border-top:1px solid var(--border);margin:0}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.flow-section{animation:fadeUp .4s ease both}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eye">Technical Reference · ANTS Trail</div>
+      <h1>Application<br><span>Flow Specs</span></h1>
+      <p class="hero-sub">End-to-end technical flows for all major user journeys, API contracts, data schemas, and reference screens.</p>
+      <div class="hero-tags">
+        <span class="htag">01 · Auth</span>
+        <span class="htag">02 · Profile &amp; Roadmap</span>
+        <span class="htag">03 · Progress</span>
+        <span class="htag">04 · Admin</span>
+        <span class="htag">05 · Course Matrix</span>
+        <span class="htag">06 · SSO Stub</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><strong>2</strong><span>Roles</span></div>
+      <div class="hstat"><strong>6</strong><span>Flows</span></div>
+      <div class="hstat"><strong>R1+R2</strong><span>Releases</span></div>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Flows">
+  <a href="#f1"><span class="nn">01</span> Auth</a>
+  <a href="#f2"><span class="nn">02</span> Profile &amp; Roadmap</a>
+  <a href="#f3"><span class="nn">03</span> Progress</a>
+  <a href="#f4"><span class="nn">04</span> Admin</a>
+  <a href="#f5"><span class="nn">05</span> Course Matrix</a>
+  <a href="#f6"><span class="nn">06</span> SSO Stub</a>
+</nav>
+
+<div class="main">
+
+<!-- ══════════════════════ 01 AUTH ══════════════════════ -->
+<section class="flow-section" id="f1">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <div class="sec-title">
+      <h2>User Registration &amp; Authentication <span class="badge badge-r1">R1</span></h2>
+      <p>Learners register with email + password. Admins are seeded via DB init — no self-registration. All routes except <code class="inline">/register</code> and <code class="inline">/login</code> require a valid JWT. Passwords hashed with bcrypt (10 rounds).</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><div class="cd cd-g"></div><span class="card-head-lbl">screen · /register</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="mock-logo"><div class="mock-logo-dot"></div>ANTS Trail</div>
+          <div class="mock-h2">Create account</div>
+          <div class="mock-sub">Join the AI transformation programme</div>
+          <div class="mock-field"><label>EMAIL ADDRESS</label><div class="mock-inp">arjun@company.com</div></div>
+          <div class="mock-field"><label>PASSWORD</label><div class="mock-inp focused">••••••••••••</div></div>
+          <div class="mock-btn">Create account →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="cd cd-c"></div><span class="card-head-lbl">screen · /login — error state (401)</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="mock-logo"><div class="mock-logo-dot"></div>ANTS Trail</div>
+          <div class="mock-h2">Sign in</div>
+          <div class="mock-sub">Welcome back to your learning trail</div>
+          <div class="mock-err-box">⚠ Invalid credentials — please try again</div>
+          <div class="mock-field"><label>EMAIL ADDRESS</label><div class="mock-inp err">user@company.com</div></div>
+          <div class="mock-field"><label>PASSWORD</label><div class="mock-inp err">••••••••</div></div>
+          <div class="mock-btn mock-btn-danger">Try again →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="cd cd-a"></div><span class="card-head-lbl">auth flow — register + login</span></div>
+    <div class="card-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div class="step-c">
+            <div class="step-lbl">POST /register <span class="stag stag-post">POST</span></div>
+            <div class="step-det">{ email, password } → validate format + check uniqueness → bcrypt hash (10 rounds) → INSERT users (role: 'learner') → JWT (24h) → 302 /profile</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div class="step-c">
+            <div class="step-lbl">POST /login <span class="stag stag-post">POST</span></div>
+            <div class="step-det">{ email, password } → lookup user → bcrypt.compare(password, hash) → match: JWT + 302 /roadmap · no match: 401 Unauthorized</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-c">
+            <div class="step-lbl">Auth middleware <span class="stag stag-db">ALL ROUTES</span></div>
+            <div class="step-det">Verify JWT → extract user_id + role → attach to req.user → 401 if missing or expired</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div class="step-c">
+            <div class="step-lbl">Admin role guard <span class="stag stag-err">403 if learner</span></div>
+            <div class="step-det">Routes under /admin/* check req.user.role === 'admin' → 403 Forbidden + redirect /roadmap. Admins seeded via DB init script.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-head"><div class="dots"><span></span><span></span><span></span></div>users table schema</div>
+    <pre><span class="k">CREATE TABLE</span> users (
+  id            UUID        <span class="k">PRIMARY KEY DEFAULT</span> gen_random_uuid(),
+  email         TEXT        <span class="k">UNIQUE NOT NULL</span>,
+  password_hash TEXT        <span class="k">NOT NULL</span>,
+  role          TEXT        <span class="k">NOT NULL DEFAULT</span> <span class="s">'learner'</span>,  <span class="c">-- 'learner' | 'admin'</span>
+  created_at    TIMESTAMPTZ <span class="k">DEFAULT</span> now(),
+  last_login    TIMESTAMPTZ
+);</pre>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════ 02 PROFILE + ROADMAP ══════════════════════ -->
+<section class="flow-section" id="f2">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <div class="sec-title">
+      <h2>Profile Form &amp; Roadmap Generation <span class="badge badge-r1">R1</span></h2>
+      <p>After registration the learner fills a 3-field profile. The roadmap engine does a deterministic lookup in <code class="inline">course_matrix.json</code> — mandatory courses first, then role-specific by sequence_order. No key match → mandatory only + fallback notice.</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><div class="cd cd-a"></div><span class="card-head-lbl">screen · /profile — form</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="mock-progress-steps">
+            <div class="mps done"></div><div class="mps active"></div><div class="mps"></div>
+          </div>
+          <div class="mock-eye">Step 2 of 3</div>
+          <div class="mock-h2" style="margin-bottom:18px">Build your profile</div>
+          <div class="mock-field"><label>PRIMARY TOOL</label></div>
+          <div class="mock-sel-grid">
+            <div class="mock-opt sel">Tosca</div>
+            <div class="mock-opt">TestComplete</div>
+            <div class="mock-opt">JMeter</div>
+            <div class="mock-opt">Postman</div>
+            <div class="mock-opt">Playwright</div>
+            <div class="mock-opt">Manual QA</div>
+          </div>
+          <div class="mock-field"><label>EXPERIENCE LEVEL</label></div>
+          <div class="mock-chips">
+            <div class="mock-chip">Junior</div>
+            <div class="mock-chip sel">Mid</div>
+            <div class="mock-chip">Senior</div>
+            <div class="mock-chip">Architect</div>
+          </div>
+          <div class="mock-btn">Generate my roadmap →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="cd cd-t"></div><span class="card-head-lbl">screen · /roadmap</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="rm-header">
+            <div>
+              <div class="rm-title">Your ANTS Trail</div>
+              <div class="rm-key">tosca_mid · 6 courses</div>
+            </div>
+            <div><div class="rm-pct">38%</div><div class="rm-pct-lbl">complete</div></div>
+          </div>
+          <div class="rm-bar"><div class="rm-bar-fill" style="width:38%"></div></div>
+          <div class="course-row done">
+            <div class="c-dot" style="background:var(--green)"></div>
+            <div class="c-info"><div class="c-name">What is AI / Gen AI — Foundations</div><div class="c-meta">90 min · mandatory · completed</div></div>
+            <span class="c-plat">Udemy</span>
+          </div>
+          <div class="course-row done">
+            <div class="c-dot" style="background:var(--green)"></div>
+            <div class="c-info"><div class="c-name">AI for Test Case Generation</div><div class="c-meta">90 min · mandatory · completed</div></div>
+            <span class="c-plat">Udemy</span>
+          </div>
+          <div class="course-row active">
+            <div class="c-dot" style="background:var(--accent);box-shadow:0 0 6px var(--accent)"></div>
+            <div class="c-info"><div class="c-name">Playwright Fundamentals</div><div class="c-meta">120 min · mandatory · in progress</div></div>
+            <span class="c-plat" style="border-color:rgba(124,109,250,.3);color:var(--accent2)">Udemy</span>
+          </div>
+          <div class="course-row">
+            <div class="c-dot" style="background:var(--surface3);border:1px solid var(--border2)"></div>
+            <div class="c-info"><div class="c-name">Playwright Migration from Tosca</div><div class="c-meta">60 min · role-specific</div></div>
+            <span class="c-plat">Internal</span>
+          </div>
+          <div class="course-row">
+            <div class="c-dot" style="background:var(--surface3);border:1px solid var(--border2)"></div>
+            <div class="c-info"><div class="c-name">Agentic AI for Testers</div><div class="c-meta">60 min · mandatory</div></div>
+            <span class="c-plat">YouTube</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-head"><div class="dots"><span></span><span></span><span></span></div>profile_key derivation + roadmap engine</div>
+    <pre><span class="c">// Step 1 — derive profile_key from form submission</span>
+<span class="k">function</span> <span class="n">deriveProfileKey</span>(primaryTool, experienceLevel) {
+  <span class="k">const</span> toolMap = { <span class="s">'Tosca'</span>:<span class="s">'tosca'</span>, <span class="s">'TestComplete'</span>:<span class="s">'testcomplete'</span>, <span class="s">'JMeter'</span>:<span class="s">'perf'</span>,
+                    <span class="s">'Postman'</span>:<span class="s">'api'</span>, <span class="s">'Manual QA'</span>:<span class="s">'manual'</span>, <span class="s">'Playwright'</span>:<span class="s">'playwright'</span> };
+  <span class="k">const</span> lvlMap  = { <span class="s">'Junior'</span>:<span class="s">'junior'</span>, <span class="s">'Mid'</span>:<span class="s">'mid'</span>, <span class="s">'Senior'</span>:<span class="s">'senior'</span>, <span class="s">'Architect'</span>:<span class="s">'architect'</span> };
+  <span class="k">return</span> `${toolMap[primaryTool] ?? <span class="s">'unknown'</span>}_${lvlMap[experienceLevel] ?? <span class="s">'mid'</span>}`;
+}
+
+<span class="c">// Step 2 — lookup + sort (mandatory first, then role-specific)</span>
+<span class="k">function</span> <span class="n">getRoadmap</span>(profileKey, matrix) {
+  <span class="k">const</span> profile = matrix.profiles.find(p => p.profile_key === profileKey);
+  <span class="k">if</span> (!profile) {
+    <span class="c">// Fallback: mandatory courses only + notice</span>
+    <span class="k">const</span> all = matrix.profiles.flatMap(p => p.courses);
+    <span class="k">return</span> { courses: all.filter(c => c.mandatory).sort((a,b) => a.sequence_order - b.sequence_order), fallback: <span class="v">true</span> };
+  }
+  <span class="k">const</span> sorted = profile.courses.sort((a,b) => a.sequence_order - b.sequence_order);
+  <span class="k">return</span> { courses: [...sorted.filter(c => c.mandatory), ...sorted.filter(c => !c.mandatory)], fallback: <span class="v">false</span> };
+}</pre>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════ 03 PROGRESS ══════════════════════ -->
+<section class="flow-section" id="f3">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <div class="sec-title">
+      <h2>Progress Tracking <span class="badge badge-r1">R1</span></h2>
+      <p>Each course has 3 states. Updated via a single click — auto-persisted via UPSERT, no save button. Completion % recalculated and returned inline; the UI patches the DOM without a page reload.</p>
+    </div>
+  </div>
+
+  <div class="state-row">
+    <div class="state-card">
+      <div class="state-ico" style="background:var(--surface3);border:1px solid var(--border2);color:var(--text3)">○</div>
+      <div><div class="state-n" style="color:var(--text3)">Not started</div><div class="state-c">state = 'not_started'</div></div>
+    </div>
+    <div class="state-card" style="border-color:rgba(124,109,250,.2);background:rgba(124,109,250,.04)">
+      <div class="state-ico" style="background:var(--accent-glow);color:var(--accent)">◑</div>
+      <div><div class="state-n" style="color:var(--accent2)">In progress</div><div class="state-c">state = 'in_progress'</div></div>
+    </div>
+    <div class="state-card" style="border-color:rgba(54,217,138,.2);background:rgba(54,217,138,.04)">
+      <div class="state-ico" style="background:var(--green-dim);color:var(--green)">✓</div>
+      <div><div class="state-n" style="color:var(--green)">Completed</div><div class="state-c">state = 'completed'</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="cd cd-a"></div><span class="card-head-lbl">PATCH /progress — upsert flow</span></div>
+    <div class="card-body">
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-lbl">Client request <span class="stag stag-post">PATCH</span></div><div class="step-det">PATCH /progress · { course_id, new_state } · Authorization: Bearer &lt;JWT&gt;</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-lbl">Auth extracts user_id <span class="stag stag-db">JWT</span></div><div class="step-det">req.user.id scopes all DB writes — users can only update their own rows</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-lbl">UPSERT progress table <span class="stag stag-db">SQL</span></div><div class="step-det">ON CONFLICT (user_id, course_id) DO UPDATE SET state = excluded.state, updated_at = now()</div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-lbl">Recalculate % <span class="stag stag-db">COMPUTE</span></div><div class="step-det">COUNT(*) FILTER (WHERE state='completed') / COUNT(*) * 100 — rounded to nearest int</div></div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-lbl">200 inline update <span class="stag stag-get">200</span></div><div class="step-det">Return { state, completion_pct } → UI patches DOM directly, no reload needed</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-head"><div class="dots"><span></span><span></span><span></span></div>progress table + completion query</div>
+    <pre><span class="k">CREATE TABLE</span> progress (
+  user_id    UUID  <span class="k">REFERENCES</span> users(id) <span class="k">ON DELETE CASCADE</span>,
+  course_id  TEXT  <span class="k">NOT NULL</span>,
+  state      TEXT  <span class="k">NOT NULL DEFAULT</span> <span class="s">'not_started'</span>,
+  updated_at TIMESTAMPTZ <span class="k">DEFAULT</span> now(),
+  <span class="k">PRIMARY KEY</span> (user_id, course_id)
+);
+
+<span class="c">-- Completion % in one query</span>
+<span class="k">SELECT</span> ROUND(
+  COUNT(*) FILTER (<span class="k">WHERE</span> state = <span class="s">'completed'</span>) * <span class="v">100.0</span> / NULLIF(COUNT(*), <span class="v">0</span>)
+) <span class="k">AS</span> completion_pct
+<span class="k">FROM</span> progress <span class="k">WHERE</span> user_id = $1;</pre>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════ 04 ADMIN ══════════════════════ -->
+<section class="flow-section" id="f4">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <div class="sec-title">
+      <h2>Admin Dashboard <span class="badge badge-r1">R1 table</span><span class="badge badge-r2">R2 charts</span></h2>
+      <p>Admin-only protected route. R1 — sortable learner table with completion %. R2 — cohort analytics charts, overdue flagging (target date &lt; today and not completed), role/level filters, CSV export. Read-only — no editing of learner data.</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><div class="cd cd-b"></div><span class="card-head-lbl">screen · /admin — R1 learner table</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="adm-head">
+            <div class="adm-title">QE Team Progress</div>
+            <div class="pill-row"><span class="pill active">All</span><span class="pill">Automation</span><span class="pill">Perf</span></div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><div class="stat-v">24</div><div class="stat-l">Engineers</div></div>
+            <div class="stat-box"><div class="stat-v" style="color:var(--green)">58%</div><div class="stat-l">Avg complete</div></div>
+            <div class="stat-box"><div class="stat-v" style="color:var(--coral)">4</div><div class="stat-l">Overdue</div></div>
+          </div>
+          <table class="atbl">
+            <thead><tr><th>Name</th><th>Profile</th><th>Progress ↑</th></tr></thead>
+            <tbody>
+              <tr class="ov">
+                <td>R. Kumar</td>
+                <td style="font-family:var(--mono);font-size:10px">tosca_junior</td>
+                <td><div class="mini-bar"><div class="mbar"><div class="mbar-f low" style="width:12%"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--coral)">12%</span></div></td>
+              </tr>
+              <tr>
+                <td>P. Singh</td>
+                <td style="font-family:var(--mono);font-size:10px">perf_mid</td>
+                <td><div class="mini-bar"><div class="mbar"><div class="mbar-f mid" style="width:45%"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--amber)">45%</span></div></td>
+              </tr>
+              <tr>
+                <td>A. Nair</td>
+                <td style="font-family:var(--mono);font-size:10px">api_senior</td>
+                <td><div class="mini-bar"><div class="mbar"><div class="mbar-f" style="width:83%"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--green)">83%</span></div></td>
+              </tr>
+              <tr>
+                <td>S. Rao</td>
+                <td style="font-family:var(--mono);font-size:10px">tosca_mid</td>
+                <td><div class="mini-bar"><div class="mbar"><div class="mbar-f" style="width:100%"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--green)">100%</span></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="cd cd-t"></div><span class="card-head-lbl">screen · /admin — R2 analytics</span></div>
+      <div class="card-body">
+        <div class="screen">
+          <div class="adm-head">
+            <div class="adm-title">Cohort Analytics</div>
+            <span class="pill active" style="cursor:pointer">↓ Export CSV</span>
+          </div>
+          <div class="bchart">
+            <div class="bchart-lbl">COMPLETION DISTRIBUTION</div>
+            <div class="brow"><span class="brow-key">0–25%</span><div class="btrack"><div class="bfill" style="width:17%;background:var(--coral)"></div></div><span class="bcount" style="color:var(--coral)">4</span></div>
+            <div class="brow"><span class="brow-key">26–50%</span><div class="btrack"><div class="bfill" style="width:29%;background:var(--amber)"></div></div><span class="bcount" style="color:var(--amber)">7</span></div>
+            <div class="brow"><span class="brow-key">51–75%</span><div class="btrack"><div class="bfill" style="width:54%;background:var(--accent)"></div></div><span class="bcount" style="color:var(--accent2)">13</span></div>
+            <div class="brow"><span class="brow-key">76–100%</span><div class="btrack"><div class="bfill" style="width:33%;background:var(--green)"></div></div><span class="bcount" style="color:var(--green)">8</span></div>
+          </div>
+          <div class="bchart-lbl" style="margin-bottom:8px">TOP INCOMPLETE COURSES</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text2);padding:7px 10px;background:var(--surface3);border-radius:6px">
+              <span>Playwright Fundamentals</span><span style="color:var(--coral);font-family:var(--mono);font-size:10px">14 pending</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text2);padding:7px 10px;background:var(--surface3);border-radius:6px">
+              <span>Agentic AI for Testers</span><span style="color:var(--amber);font-family:var(--mono);font-size:10px">9 pending</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text2);padding:7px 10px;background:var(--surface3);border-radius:6px">
+              <span>AI for Test Case Generation</span><span style="color:var(--text3);font-family:var(--mono);font-size:10px">5 pending</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="cd cd-b"></div><span class="card-head-lbl">GET /admin/dashboard — aggregation + access flow</span></div>
+    <div class="card-body">
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-lbl">Role guard <span class="stag stag-err">403 if learner</span></div><div class="step-det">req.user.role must equal 'admin' → redirect /roadmap if not</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-lbl">JOIN + GROUP BY aggregate <span class="stag stag-db">SQL</span></div><div class="step-det">JOIN users + progress GROUP BY user_id → total, completed, pct. ORDER BY pct ASC (laggards first)</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-lbl">R2: Overdue detection <span class="stag stag-err">R2</span></div><div class="step-det">target_date &lt; TODAY AND state != 'completed' → flag row red in admin table</div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-lbl">R2: Cohort charts <span class="stag stag-get">R2</span></div><div class="step-det">Bucket engineers into 0–25%, 26–50%, 51–75%, 76–100% ranges. Top incomplete = course_ids with highest not-completed count.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════ 05 COURSE MATRIX ══════════════════════ -->
+<section class="flow-section" id="f5">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <div class="sec-title">
+      <h2>Course Matrix Content Flow <span class="badge badge-both">Both</span></h2>
+      <p><code class="inline">course_matrix.json</code> is the single source of truth for all roadmap logic. Produced by the SME team, consumed read-only by the app. Schema locked at kickoff — changes require all-hands sign-off.</p>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-head"><div class="dots"><span></span><span></span><span></span></div>course_matrix.json — locked schema v1.0</div>
+    <pre>{
+  <span class="n">"schema_version"</span>: <span class="s">"1.0"</span>,
+  <span class="n">"profiles"</span>: [{
+    <span class="n">"profile_key"</span>:      <span class="s">"tosca_mid"</span>,          <span class="c">// join key — must match deriveProfileKey() exactly</span>
+    <span class="n">"display_label"</span>:    <span class="s">"Tosca Engineer (Mid)"</span>,
+    <span class="n">"role_tags"</span>:        [<span class="s">"automation"</span>],
+    <span class="n">"experience_level"</span>: <span class="s">"mid"</span>,
+    <span class="n">"courses"</span>: [{
+      <span class="n">"course_id"</span>:        <span class="s">"AI_BASICS_001"</span>,     <span class="c">// globally unique across all profiles</span>
+      <span class="n">"title"</span>:            <span class="s">"What is AI / Gen AI — Foundations"</span>,
+      <span class="n">"platform"</span>:         <span class="s">"Udemy"</span>,
+      <span class="n">"url"</span>:              <span class="v">null</span>,
+      <span class="n">"duration_minutes"</span>: <span class="v">90</span>,
+      <span class="n">"mandatory"</span>:        <span class="v">true</span>,          <span class="c">// shown to ALL profiles regardless of key match</span>
+      <span class="n">"tags"</span>:             [<span class="s">"AI basics"</span>],
+      <span class="n">"sequence_order"</span>:   <span class="v">1</span>              <span class="c">// SMEs own this — app renders ascending</span>
+    }]
+  }]
+}</pre>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="cd cd-t"></div><span class="card-head-lbl">contract rules</span></div>
+    <div class="card-body">
+      <div class="steps">
+        <div class="step"><div class="step-n">R</div><div class="step-c"><div class="step-lbl">profile_key is the join key</div><div class="step-det">Must exactly match deriveProfileKey() output. Lowercase snake_case. Changes require all-hands sync.</div></div></div>
+        <div class="step"><div class="step-n">R</div><div class="step-c"><div class="step-lbl">mandatory: true renders first for all users</div><div class="step-det">No profile key match → mandatory courses only + "custom roadmap coming soon" notice shown to user.</div></div></div>
+        <div class="step"><div class="step-n">R</div><div class="step-c"><div class="step-lbl">App never writes to this file</div><div class="step-det">Read-only at runtime, cached in memory on startup. Content updates: drop new file version → app restart to reload.</div></div></div>
+        <div class="step"><div class="step-n">R</div><div class="step-c"><div class="step-lbl">v2 increments schema_version to "2.0"</div><div class="step-det">Builder handles both "1.0" and "2.0". No breaking changes between versions — additive profile additions only.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════ 06 SSO STUB ══════════════════════ -->
+<section class="flow-section" id="f6">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <div class="sec-title">
+      <h2>SSO Integration Stub <span class="badge badge-r2">R2</span></h2>
+      <p>R2 prepares the SSO integration point behind a feature flag — does not implement it. <code class="inline">SSO_ENABLED=false</code> keeps R1 local auth unchanged. The callback route returns 501 for IT handover. Contract documented in <code class="inline">SSO_INTEGRATION_GUIDE.md</code>.</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><div class="cd cd-a"></div><span class="card-head-lbl">feature flag · .env config</span></div>
+      <div class="card-body">
+        <div class="sso-row">
+          <span class="sso-lbl">SSO_ENABLED = false</span>
+          <div style="display:flex;align-items:center">
+            <div class="tog-track"><div class="tog-thumb"></div></div>
+            <span class="sso-val">→ local auth (R1)</span>
+          </div>
+        </div>
+        <div class="sso-row" style="border:1px solid rgba(124,109,250,.2)">
+          <span class="sso-lbl">SSO_ENABLED = true</span>
+          <div style="display:flex;align-items:center">
+            <div class="tog-track on"><div class="tog-thumb"></div></div>
+            <span class="sso-val" style="color:var(--accent2)">→ SSO redirect</span>
+          </div>
+        </div>
+        <div class="env-bar">
+          <div><span class="ek">SSO_ENABLED</span>=<span class="ev">false</span></div>
+          <div><span class="ek">SSO_PROVIDER_URL</span>=<span class="ev">""</span></div>
+          <div><span class="ek">SSO_CLIENT_ID</span>=<span class="ev">""</span></div>
+          <div><span class="ek">SSO_CLIENT_SECRET</span>=<span class="ev">""</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="cd cd-m"></div><span class="card-head-lbl">SSO_INTEGRATION_GUIDE.md — IT handover</span></div>
+      <div class="card-body">
+        <div class="steps">
+          <div class="step"><div class="step-n" style="font-size:9px">DOC</div><div class="step-c"><div class="step-lbl">Auth flow diagram</div><div class="step-det">Current JWT flow annotated with SSO replacement points</div></div></div>
+          <div class="step"><div class="step-n" style="font-size:9px">DOC</div><div class="step-c"><div class="step-lbl">JWT shape spec</div><div class="step-det">Required payload: { user_id, email, role } — SSO callback must produce identical shape</div></div></div>
+          <div class="step"><div class="step-n" style="font-size:9px">DOC</div><div class="step-c"><div class="step-lbl">Callback contract</div><div class="step-det">GET /auth/sso/callback?code=… → exchange → upsert user → JWT → 302 /roadmap</div></div></div>
+          <div class="step"><div class="step-n" style="font-size:9px">DOC</div><div class="step-c"><div class="step-lbl">Env vars required</div><div class="step-det">All 4 env vars must be set before flipping SSO_ENABLED=true in production</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-head"><div class="dots"><span></span><span></span><span></span></div>SSO stub routing</div>
+    <pre><span class="c">// Auth router — feature flag gates between local and SSO</span>
+router.get(<span class="s">'/login'</span>, (req, res) => {
+  <span class="k">if</span> (process.env.SSO_ENABLED === <span class="s">'true'</span>) {
+    <span class="k">const</span> url = `${process.env.SSO_PROVIDER_URL}?callback=/auth/sso/callback`;
+    <span class="k">return</span> res.redirect(<span class="v">302</span>, url);   <span class="c">// → SSO provider (not implemented in R2)</span>
+  }
+  res.render(<span class="s">'login'</span>);               <span class="c">// → R1 local form (unchanged)</span>
+});
+
+<span class="c">// Callback stub — 501 until IT completes the exchange</span>
+router.get(<span class="s">'/auth/sso/callback'</span>, (req, res) => {
+  res.status(<span class="v">501</span>).json({
+    error: <span class="s">'SSO integration pending IT configuration'</span>,
+    guide: <span class="s">'docs/SSO_INTEGRATION_GUIDE.md'</span>
+  });
+});</pre>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
