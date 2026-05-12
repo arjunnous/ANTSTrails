@@ -1,0 +1,916 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-05-11",
+  "description": "NousQA Upskilling Roadmap - Course Matrix (Single Source of Truth). All resources free. Compiled from Detailed Training Plan May 2026.",
+  "courses": [
+    {
+      "course_id": "js_ts_basics",
+      "title": "JavaScript & TypeScript Basics",
+      "category": "Prerequisite",
+      "mandatory": true,
+      "resource_name": "The Odin Project — Foundations",
+      "platform": "Web (Free)",
+      "resource_link": "https://www.theodinproject.com/paths/foundations",
+      "estimated_time": "2–3 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 1
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_getting_started",
+      "title": "Playwright Getting Started",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/intro",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 2
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_full_course_2026",
+      "title": "Playwright Full Course 2026 (TS/JS)",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Playwright Tutorial 2026 — YouTube Playlist",
+      "platform": "YouTube (Free)",
+      "resource_link": "https://youtube.com/playlist?list=PL83cimSRP5ZmwhC6u255huRwSi9tlP-nc",
+      "estimated_time": "2 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 3
+        }
+      ]
+    },
+    {
+      "course_id": "try_playwright_online",
+      "title": "Try Playwright Online",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Playwright Online Playground",
+      "platform": "Tool (Free)",
+      "resource_link": "https://try.playwright.tech",
+      "estimated_time": "Ongoing",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 4
+        }
+      ]
+    },
+    {
+      "course_id": "vs_code_playwright_extension",
+      "title": "VS Code Playwright Extension",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official VS Code Marketplace",
+      "platform": "Tool (Free)",
+      "resource_link": "https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 5
+        }
+      ]
+    },
+    {
+      "course_id": "official_playwright_channel",
+      "title": "Official Playwright Channel",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "PlaywrightDev YouTube Channel",
+      "platform": "YouTube (Free)",
+      "resource_link": "https://youtube.com/@playwrightdev",
+      "estimated_time": "Ongoing",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 6
+        }
+      ]
+    },
+    {
+      "course_id": "prompt_engineering_fundamentals",
+      "title": "Prompt Engineering Fundamentals",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Anthropic Prompt Engineering Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 7
+        }
+      ]
+    },
+    {
+      "course_id": "prompting_guide_qa",
+      "title": "Prompting Guide for QA",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "DAIR.AI Prompt Engineering Guide",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 8
+        }
+      ]
+    },
+    {
+      "course_id": "google_prompting_essentials",
+      "title": "Google Prompting Essentials",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Google Prompting Essentials",
+      "platform": "Free Course",
+      "resource_link": "https://learndigital.withgoogle.com",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 9
+        }
+      ]
+    },
+    {
+      "course_id": "ai_assisted_test_case_generation",
+      "title": "AI-Assisted Test Case Generation",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "GitHub Copilot Free Tier + Docs",
+      "platform": "Tool (Free)",
+      "resource_link": "https://docs.github.com/en/copilot",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 10
+        }
+      ]
+    },
+    {
+      "course_id": "reflect_nocode_automation",
+      "title": "Reflect No-Code Automation",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "Reflect Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://reflect.run/docs",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 11
+        }
+      ]
+    },
+    {
+      "course_id": "zephyr_jira_basics",
+      "title": "Zephyr for Jira Basics",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "SmartBear Zephyr Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://smartbear.com/learn/test-management",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "junior_qa",
+          "sequence_order": 12
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_fixtures_pom",
+      "title": "Playwright Fixtures & POM",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Docs — Fixtures",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/test-fixtures",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 1
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_api_testing",
+      "title": "Playwright API Testing",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Docs — API Testing",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/api-testing",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 2
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_parallel_cicd",
+      "title": "Playwright Parallel & CI/CD",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Docs — CI/CD Guide",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/ci",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 3
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_trace_viewer",
+      "title": "Playwright Trace Viewer & Debugging",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Docs — Trace Viewer",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/trace-viewer",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 4
+        }
+      ]
+    },
+    {
+      "course_id": "awesome_playwright_curated",
+      "title": "Awesome Playwright Curated Resources",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Awesome Playwright GitHub Repo",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/mxschmitt/awesome-playwright",
+      "estimated_time": "Ongoing",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 5
+        }
+      ]
+    },
+    {
+      "course_id": "learn_playwright_roadmap",
+      "title": "Learn Playwright — 10-Step Roadmap",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "TestDino — Learn Playwright Blog",
+      "platform": "Blog (Free)",
+      "resource_link": "https://testdino.com/blog/learn-playwright",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 6
+        }
+      ]
+    },
+    {
+      "course_id": "advanced_prompt_engineering",
+      "title": "Advanced Prompt Engineering",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "DAIR.AI Prompt Engineering Guide",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 7
+        }
+      ]
+    },
+    {
+      "course_id": "github_copilot_test_automation",
+      "title": "GitHub Copilot for Test Automation",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "GitHub Copilot Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.github.com/en/copilot/using-github-copilot",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 8
+        }
+      ]
+    },
+    {
+      "course_id": "testcomplete_haloai",
+      "title": "TestComplete HaloAI Features",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "SmartBear HaloAI Product Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://smartbear.com/ai",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 9
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_ai_codegen",
+      "title": "Playwright + AI Code Generation",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "OpenAI Prompt Engineering Guide",
+      "platform": "Docs (Free)",
+      "resource_link": "https://platform.openai.com/docs/guides/prompt-engineering",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 10
+        }
+      ]
+    },
+    {
+      "course_id": "api_testing_postman",
+      "title": "API Testing with Postman",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "Postman Learning Center",
+      "platform": "Docs (Free)",
+      "resource_link": "https://learning.postman.com",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 11
+        }
+      ]
+    },
+    {
+      "course_id": "openapi_swagger_basics",
+      "title": "OpenAPI / Swagger Basics",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "Swagger Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://swagger.io/docs",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 12
+        }
+      ]
+    },
+    {
+      "course_id": "docker_qa_engineers",
+      "title": "Docker for QA Engineers",
+      "category": "☁ CI/CD & Infra",
+      "mandatory": true,
+      "resource_name": "Docker Official Get Started",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.docker.com/get-started",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 13
+        }
+      ]
+    },
+    {
+      "course_id": "github_actions_testing",
+      "title": "GitHub Actions for Testing",
+      "category": "☁ CI/CD & Infra",
+      "mandatory": true,
+      "resource_name": "GitHub Actions Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.github.com/en/actions",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "mid_level",
+          "sequence_order": 14
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_test_agents",
+      "title": "Playwright Test Agents (v1.56)",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Official Playwright Agents Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/test-agents",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 1
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_mcp_server",
+      "title": "Playwright MCP Server",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Microsoft Playwright MCP — GitHub",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/microsoft/playwright-mcp",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 2
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_ai_ecosystem",
+      "title": "Playwright AI Ecosystem 2026",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "TestDino — Playwright AI Ecosystem Blog",
+      "platform": "Blog (Free)",
+      "resource_link": "https://testdino.com/blog/playwright-ai-ecosystem",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 3
+        }
+      ]
+    },
+    {
+      "course_id": "agentql_selectors",
+      "title": "AgentQL — Natural Language Selectors",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "AgentQL Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.agentql.com",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 4
+        }
+      ]
+    },
+    {
+      "course_id": "agentic_ai_playwright",
+      "title": "Agentic AI Test Automation with Playwright",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Cegeka Engineering Blog",
+      "platform": "Blog (Free)",
+      "resource_link": "https://cegeka.com/en/blogs/agentic-ai-test-automation-with-playwright",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 5
+        }
+      ]
+    },
+    {
+      "course_id": "huggingface_agents_course",
+      "title": "Hugging Face AI Agents Course",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "HuggingFace AI Agents Course",
+      "platform": "Free Course",
+      "resource_link": "https://huggingface.co/learn/agents-course",
+      "estimated_time": "2–3 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 6
+        },
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 5
+        }
+      ]
+    },
+    {
+      "course_id": "mcp_protocol_full_docs",
+      "title": "MCP Protocol — Full Docs",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Model Context Protocol Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://modelcontextprotocol.io",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 7
+        }
+      ]
+    },
+    {
+      "course_id": "langchain_agentic_workflows",
+      "title": "LangChain — Agentic Workflows",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "LangChain Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://python.langchain.com/docs/get_started",
+      "estimated_time": "2 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 8
+        }
+      ]
+    },
+    {
+      "course_id": "claude_api_qa_agents",
+      "title": "Claude API for QA Agents",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Anthropic API Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.anthropic.com",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 9
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_mcp_llm_arch",
+      "title": "Playwright MCP + LLM Architecture",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "ScrollTest.com — MCP + LLM Blog",
+      "platform": "Blog (Free)",
+      "resource_link": "https://scrolltest.com/playwright-mcp-llm-architecture-ai-augmented-test-automation",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 10
+        }
+      ]
+    },
+    {
+      "course_id": "llm_eval_promptfoo",
+      "title": "LLM Evaluation with Promptfoo",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Promptfoo — GitHub",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/promptfoo/promptfoo",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 11
+        },
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 11
+        }
+      ]
+    },
+    {
+      "course_id": "bearq_early_access",
+      "title": "BearQ Early Access",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "SmartBear BearQ Product Page",
+      "platform": "Product (Free EA)",
+      "resource_link": "https://smartbear.com/product/bearq",
+      "estimated_time": "Apply Now",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 12
+        }
+      ]
+    },
+    {
+      "course_id": "pactflow_contract_testing",
+      "title": "PactFlow Contract Testing",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "PactFlow Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.pactflow.io",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 13
+        }
+      ]
+    },
+    {
+      "course_id": "kubernetes_basics",
+      "title": "Kubernetes Basics",
+      "category": "☁ CI/CD & Infra",
+      "mandatory": true,
+      "resource_name": "Kubernetes Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://kubernetes.io/docs/tutorials",
+      "estimated_time": "1–2 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "senior_sdet",
+          "sequence_order": 14
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_framework_arch",
+      "title": "Playwright Framework Architecture",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Playwright Best Practices Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://playwright.dev/docs/best-practices",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 1
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_mcp_custom_agent",
+      "title": "Playwright MCP — Custom Agent Design",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Microsoft Playwright MCP GitHub",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/microsoft/playwright-mcp",
+      "estimated_time": "1–2 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 2
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_build_vs_buy",
+      "title": "Playwright Build vs Buy 2026",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "Bug0 — MCP Changes Build vs Buy Blog",
+      "platform": "Blog (Free)",
+      "resource_link": "https://bug0.com/blog/playwright-mcp-changes-ai-testing-2026",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 3
+        }
+      ]
+    },
+    {
+      "course_id": "playwright_ai_testgen_guide",
+      "title": "Playwright AI Test Generation Guide 2026",
+      "category": "🎭 Playwright",
+      "mandatory": true,
+      "resource_name": "BuildBetter AI — Playwright AI 2026 Guide",
+      "platform": "Blog (Free)",
+      "resource_link": "https://blog.buildbetter.ai/playwright-test-generation-with-ai-complete-2026-guide",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 4
+        }
+      ]
+    },
+    {
+      "course_id": "12_factor_agents",
+      "title": "12-Factor Agents — Agent Design Principles",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "12-Factor Agents GitHub",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/humanlayer/12-factor-agents",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 6
+        }
+      ]
+    },
+    {
+      "course_id": "mcp_protocol_deep_dive",
+      "title": "MCP Protocol Deep Dive",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Model Context Protocol Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://modelcontextprotocol.io",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 7
+        }
+      ]
+    },
+    {
+      "course_id": "langchain_orchestration_rag",
+      "title": "LangChain — Orchestration & RAG",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "LangChain Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://python.langchain.com/docs/get_started",
+      "estimated_time": "2 wks",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 8
+        }
+      ]
+    },
+    {
+      "course_id": "anthropic_prompt_eng_overview",
+      "title": "Anthropic Prompt Engineering Overview",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "Anthropic Docs — Prompt Engineering",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 9
+        }
+      ]
+    },
+    {
+      "course_id": "openai_cookbook_agentic",
+      "title": "OpenAI Cookbook — Agentic Patterns",
+      "category": "🤖 AI Skills",
+      "mandatory": true,
+      "resource_name": "OpenAI Cookbook GitHub",
+      "platform": "GitHub (Free)",
+      "resource_link": "https://github.com/openai/openai-cookbook",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 10
+        }
+      ]
+    },
+    {
+      "course_id": "bearq_autonomous_qa",
+      "title": "SmartBear BearQ — Autonomous QA",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "SmartBear BearQ Docs + FAQs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://smartbear.com/product/bearq",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 12
+        }
+      ]
+    },
+    {
+      "course_id": "smartbear_app_integrity",
+      "title": "SmartBear Application Integrity Core",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "SmartBear Product Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://smartbear.com/solutions",
+      "estimated_time": "0.5 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 13
+        }
+      ]
+    },
+    {
+      "course_id": "ai_qa_strategy",
+      "title": "AI QA Strategy & Governance",
+      "category": "🛠 Tools",
+      "mandatory": true,
+      "resource_name": "Ministry of Testing Articles",
+      "platform": "Community (Free)",
+      "resource_link": "https://ministryoftesting.com",
+      "estimated_time": "Ongoing",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 14
+        }
+      ]
+    },
+    {
+      "course_id": "ai_native_cicd",
+      "title": "AI-native CI/CD Pipeline Design",
+      "category": "☁ CI/CD & Infra",
+      "mandatory": true,
+      "resource_name": "GitHub Actions + Docker Official Docs",
+      "platform": "Docs (Free)",
+      "resource_link": "https://docs.github.com/en/actions",
+      "estimated_time": "1 wk",
+      "type": "course",
+      "profile_assignments": [
+        {
+          "profile_key": "test_lead",
+          "sequence_order": 15
+        }
+      ]
+    }
+  ]
+}
