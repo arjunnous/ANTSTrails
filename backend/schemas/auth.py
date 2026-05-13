@@ -14,3 +14,4 @@ class Token(BaseModel):
     token_type: str = "bearer"
     user_id: int
     role: str
+    full_name: str

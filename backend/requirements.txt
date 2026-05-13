@@ -1,6 +1,6 @@
 fastapi
 uvicorn[standard]
-pydantic
+pydantic[email]
 python-jose[cryptography]
 bcrypt
 mysqlclient

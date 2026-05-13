@@ -47,9 +47,11 @@ export default function ProfileSelect() {
           {profiles.map((profile) => (
             <Card
               key={profile.id}
-              className={`cursor-pointer transition duration-300 ${
-                selected === profile.id ? 'border-sky-500 shadow-sky-100' : 'border-slate-200'
-              } border bg-white`}
+              className={`cursor-pointer transition duration-300 border ${
+                selected === profile.id
+                  ? 'border-emerald-500 shadow-emerald-100 bg-emerald-50'
+                  : 'border-slate-200 bg-white hover:border-sky-400 hover:shadow-sky-100'
+              }`}
               onClick={() => setSelected(profile.id)}
             >
               <div className="flex items-center justify-between gap-4">
@@ -58,7 +60,7 @@ export default function ProfileSelect() {
                   <p className="mt-3 text-sm leading-6 text-slate-600">{profile.description}</p>
                 </div>
                 {selected === profile.id ? (
-                  <Badge variant="secondary">Selected</Badge>
+                  <Badge className="bg-emerald-500 text-white hover:bg-emerald-500">Selected</Badge>
                 ) : (
                   <Badge variant="default">Profile</Badge>
                 )}
